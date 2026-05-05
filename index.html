@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eka Hasbi Habibi - Portfolio</title>
+  <meta name="description" content="Portfolio Eka Hasbi Habibi - Information System Student, Web Development, UI/UX, Data Analysis." />
+
+  <style>
+    :root {
+      --bg: #fff7ee;
+      --bg-soft: #fffaf4;
+      --text: #1f2937;
+      --muted: #667085;
+      --primary: #ff8a3d;
+      --primary-dark: #e8641f;
+      --secondary: #243b6b;
+      --card: #ffffff;
+      --line: #f0dfcf;
+      --shadow: 0 18px 45px rgba(55, 34, 15, 0.12);
+      --radius: 28px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255, 138, 61, 0.20), transparent 25%),
+        radial-gradient(circle at 92% 8%, rgba(36, 59, 107, 0.15), transparent 22%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 247, 238, 0.78);
+      border-bottom: 1px solid rgba(240, 223, 207, 0.8);
+    }
+
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--secondary);
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #ffbe79);
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 25px rgba(255, 138, 61, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .nav-links a {
+      opacity: 0.78;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--primary-dark);
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border: 1px solid var(--primary);
+      border-radius: 999px;
+      color: var(--primary-dark) !important;
+      background: rgba(255, 138, 61, 0.08);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 46px;
+      padding: 70px 0 80px;
+      position: relative;
+    }
+
+    .social-rail {
+      position: fixed;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-rail a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 25px rgba(31, 41, 55, 0.08);
+      color: var(--secondary);
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .social-rail a:hover {
+      transform: translateY(-4px);
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 138, 61, 0.12);
+      border: 1px solid rgba(255, 138, 61, 0.28);
+      color: var(--primary-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: clamp(44px, 7vw, 92px);
+      line-height: 0.98;
+      letter-spacing: -0.075em;
+      color: var(--secondary);
+      margin-bottom: 22px;
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 16px 30px rgba(255, 138, 61, 0.32);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--secondary);
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 650px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(31, 41, 55, 0.06);
+    }
+
+    .stat-card strong {
+      display: block;
+      color: var(--secondary);
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
+
+    .blob {
+      width: min(430px, 88vw);
+      aspect-ratio: 1;
+      border-radius: 42% 58% 45% 55% / 52% 42% 58% 48%;
+      background: linear-gradient(145deg, #ffd6a8, #ff8a3d 55%, #243b6b);
+      position: absolute;
+      box-shadow: var(--shadow);
+      animation: morph 8s ease-in-out infinite;
+    }
+
+    @keyframes morph {
+      0%, 100% { border-radius: 42% 58% 45% 55% / 52% 42% 58% 48%; }
+      50% { border-radius: 57% 43% 58% 42% / 45% 58% 42% 55%; }
+    }
+
+    .photo-card {
+      position: relative;
+      width: min(340px, 80vw);
+      padding: 18px;
+      border-radius: 42px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      box-shadow: 0 24px 55px rgba(55, 34, 15, 0.16);
+      backdrop-filter: blur(12px);
+      transform: rotate(2deg);
+    }
+
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 32px;
+      border: 8px solid #fff;
+    }
+
+    .floating-pill {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 15px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 35px rgba(31, 41, 55, 0.12);
+      color: var(--secondary);
+      font-weight: 900;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .pill-1 { top: 90px; left: 0; }
+    .pill-2 { right: 0; top: 160px; }
+    .pill-3 { left: 28px; bottom: 95px; }
+    .pill-4 { right: 42px; bottom: 38px; }
+
+    /* SECTIONS */
+    section {
+      padding: 84px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 26px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      color: var(--secondary);
+    }
+
+    .section-desc {
+      max-width: 430px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 16px 42px rgba(31, 41, 55, 0.07);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 55px rgba(31, 41, 55, 0.10);
+    }
+
+    .card h3 {
+      color: var(--secondary);
+      font-size: 22px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .about-list li {
+      display: flex;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--primary);
+      margin-top: 9px;
+      flex: 0 0 auto;
+    }
+
+    .skill-card {
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .skill-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 138, 61, 0.12);
+      font-size: 24px;
+      margin-bottom: 22px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(36, 59, 107, 0.07);
+      border: 1px solid rgba(36, 59, 107, 0.10);
+      color: var(--secondary);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .project-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .project-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary-dark);
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      margin-top: 20px;
+      color: var(--primary-dark);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 26px;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 42px rgba(31, 41, 55, 0.06);
+    }
+
+    .timeline-date {
+      color: var(--primary-dark);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .timeline-content h3 {
+      color: var(--secondary);
+      font-size: 21px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-content strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .timeline-content ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .contact-wrap {
+      background: linear-gradient(135deg, var(--secondary), #15233f);
+      color: #fff;
+      border-radius: 42px;
+      padding: 56px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-wrap::after {
+      content: "";
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(255, 138, 61, 0.25);
+      position: absolute;
+      right: -100px;
+      top: -120px;
+    }
+
+    .contact-wrap h2 {
+      font-size: clamp(30px, 4vw, 52px);
+      letter-spacing: -0.06em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-wrap p {
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 620px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-links a {
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
+
+    .contact-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      padding: 34px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .social-rail {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 24px;
+        padding-top: 48px;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-desc {
+        margin-top: 12px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav-inner {
+        display: block;
+        padding: 14px 0;
+      }
+
+      .brand {
+        justify-content: center;
+        margin-bottom: 12px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+        font-size: 13px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-pill {
+        font-size: 12px;
+        padding: 9px 12px;
+      }
+
+      .pill-1 { left: -4px; top: 74px; }
+      .pill-2 { right: -2px; top: 126px; }
+      .pill-3 { left: 2px; bottom: 82px; }
+      .pill-4 { right: 10px; bottom: 30px; }
+
+      .card,
+      .timeline-item,
+      .contact-wrap {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="social-rail" aria-label="Social links">
+    <a href="https://github.com/ekahasbihabibi" target="_blank" title="GitHub">GH</a>
+    <a href="https://linkedin.com/in/ekahasbihabibi" target="_blank" title="LinkedIn">IN</a>
+    <a href="mailto:ekahasbi04@gmail.com" title="Email">@</a>
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Eka Hasbi Habibi">
+        <span class="brand-mark">EH</span>
+        <span>Eka Hasbi</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a class="nav-cta" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="container hero">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">👋 Hi, There!</div>
+        <h1 class="hero-title">I'm Eka <span>Hasbi Habibi</span></h1>
+        <p class="hero-subtitle">Information System Student · Web Developer · UI/UX · Data Analyst</p>
+        <p class="hero-desc">
+          An undergraduate student with a strong interest in system development and IT project management.
+          I enjoy building clean web interfaces, documenting project workflows, and transforming ideas into useful digital products.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Get in Touch →</a>
+          <a class="btn btn-outline" href="https://github.com/ekahasbihabibi" target="_blank">View GitHub</a>
+          <a class="btn btn-outline" href="https://linkedin.com/in/ekahasbihabibi" target="_blank">LinkedIn</a>
+        </div>
+
+        <div class="stats" aria-label="Portfolio highlights">
+          <div class="stat-card">
+            <strong>3.71</strong>
+            <span>Current GPA</span>
+          </div>
+          <div class="stat-card">
+            <strong>4+</strong>
+            <span>Web & App Projects</span>
+          </div>
+          <div class="stat-card">
+            <strong>43</strong>
+            <span>Partner Docs Managed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="blob"></div>
+        <div class="photo-card">
+          <img src="https://avatars.githubusercontent.com/u/128968283?v=4" alt="Eka Hasbi Habibi" />
+        </div>
+        <span class="floating-pill pill-1">💻 Web Dev</span>
+        <span class="floating-pill pill-2">🎨 UI/UX</span>
+        <span class="floating-pill pill-3">📊 Data Analyst</span>
+        <span class="floating-pill pill-4">📝 Documentation</span>
+      </div>
+    </section>
+
+    <section id="skills" class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Hard Skills</p>
+          <h2 class="section-title">Tools & kemampuan yang saya gunakan</h2>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card skill-card reveal">
+          <div>
+            <div class="skill-icon">💻</div>
+            <h3>Programming</h3>
+            <p>Dasar pengembangan web dan aplikasi sederhana.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">PHP</span>
+            <span class="tag">Dart</span>
+            <span class="tag">Flutter</span>
+          </div>
+        </article>
+
+        <article class="card skill-card reveal">
+          <div>
+            <div class="skill-icon">🎯</div>
+            <h3>Design</h3>
+            <p>Membuat alur, rancangan tampilan, dan visual pendukung.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Figma</span>
+            <span class="tag">Canva</span>
+            <span class="tag">Lucidchart</span>
+            <span class="tag">UI/UX</span>
+          </div>
+        </article>
+
+        <article class="card skill-card reveal">
+          <div>
+            <div class="skill-icon">📈</div>
+            <h3>Productivity</h3>
+            <p>Administrasi proyek, dokumentasi, dan analisis data.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Excel</span>
+            <span class="tag">Word</span>
+            <span class="tag">PowerPoint</span>
+            <span class="tag">SPSS</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Projects</p>
+          <h2 class="section-title">Beberapa project publik</h2>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card project-card reveal">
+          <span class="project-meta">🌐 Team Project</span>
+          <h3>Project Web Dasar Team E</h3>
+          <p>Collaborative web development project built with a team as part of foundational web programming coursework.</p>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Team Project</span>
+          </div>
+          <a class="project-link" href="https://github.com/ekahasbihabibi/project-web-dasar-team-E" target="_blank">View on GitHub →</a>
+        </article>
+
+        <article class="card project-card reveal">
+          <span class="project-meta">🏨 Web App</span>
+          <h3>Room Availability System</h3>
+          <p>UAS project — a room availability management system built with PHP backend for web programming course.</p>
+          <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">Database</span>
+            <span class="tag">Web App</span>
+          </div>
+          <a class="project-link" href="https://github.com/ekahasbihabibi/UAS_PemogramanWebDasar_F1-Si_EkaHasbiHabibi_2209010218_ketersediaan_kamar" target="_blank">View on GitHub →</a>
+        </article>
+
+        <article class="card project-card reveal">
+          <span class="project-meta">📱 Mobile App</span>
+          <h3>StudyBuddy App</h3>
+          <p>A mobile study companion application built with Dart/Flutter to support student learning activities.</p>
+          <div class="tags">
+            <span class="tag">Dart</span>
+            <span class="tag">Flutter</span>
+            <span class="tag">Mobile</span>
+          </div>
+          <a class="project-link" href="https://github.com/ekahasbihabibi/studybuddy" target="_blank">View on GitHub →</a>
+        </article>
+
+        <article class="card project-card reveal">
+          <span class="project-meta">📚 Academic</span>
+          <h3>Web Programming Tasks</h3>
+          <p>Collection of PHP-based web programming assignments demonstrating server-side development fundamentals.</p>
+          <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">Academic</span>
+            <span class="tag">Web</span>
+          </div>
+          <a class="project-link" href="https://github.com/ekahasbihabibi/SI_F1_22" target="_blank">View on GitHub →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Experiences</p>
+          <h2 class="section-title">Pengalaman organisasi & magang</h2>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-date">Mar 2025 – Apr 2025</div>
+          <div class="timeline-content">
+            <h3>Construction Staff Intern</h3>
+            <strong>PT. Telkom Akses · Commissioning Test Documentation</strong>
+            <ul>
+              <li>Prepared and organized administrative documents for projects and partner management.</li>
+              <li>Handled BACT / Commissioning Test Reports as part of final project documentation.</li>
+              <li>Managed documentation for 43 partner companies using Microsoft Excel and Google Spreadsheet.</li>
+              <li>Coordinated with team to ensure documents met standards and were properly accessible.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-date">Jan 2023 – Jan 2024</div>
+          <div class="timeline-content">
+            <h3>Active Contributor / Event Support Team</h3>
+            <strong>Ikatan Mahasiswa Muhammadiyah (IMM) UMSU</strong>
+            <ul>
+              <li>Designed promotional materials including webinar flyers for a Data Science event.</li>
+              <li>Participated in community outreach program in Telaga Jernih Village, Binjai.</li>
+              <li>Managed event technical setup including infocus, sound system, and media.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="education" class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Education</p>
+          <h2 class="section-title">Background pendidikan</h2>
+        </div>
+        <p class="section-desc">
+          Informasi utama tentang pendidikan, lokasi, bahasa, dan bidang minat.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card reveal">
+          <h3>Universitas Muhammadiyah Sumatera Utara</h3>
+          <p><strong>Bachelor of Science in Information System</strong></p>
+          <ul class="about-list">
+            <li><span class="dot"></span><span>GPA: 3.71 / 4.00</span></li>
+            <li><span class="dot"></span><span>Oct 2022 – Present · Medan, Indonesia</span></li>
+            <li><span class="dot"></span><span>Focus: System Development, UI/UX, IT Project Management, Data Analysis</span></li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <h3>Personal Info</h3>
+          <ul class="about-list">
+            <li><span class="dot"></span><span>Email: ekahasbi04@gmail.com</span></li>
+            <li><span class="dot"></span><span>Phone: +62 8576 177 2413</span></li>
+            <li><span class="dot"></span><span>Location: Medan, Indonesia</span></li>
+            <li><span class="dot"></span><span>Languages: Indonesian, English</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <div class="contact-wrap reveal">
+        <h2>Let's build something useful together.</h2>
+        <p>
+          Terbuka untuk peluang magang, kolaborasi proyek, dan diskusi seputar Web Development, UI/UX Design, Data Analysis, dan Project Documentation.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:ekahasbi04@gmail.com">✉ Email</a>
+          <a href="https://github.com/ekahasbihabibi" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/ekahasbihabibi" target="_blank">LinkedIn</a>
+          <a href="https://wa.me/6285761772413" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Eka Hasbi Habibi · Portfolio inspired by modern frontend portfolio layout.</div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
