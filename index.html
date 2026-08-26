@@ -316,6 +316,7 @@
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
+      object-position: center 20%;
       border-radius: 32px;
       border: 8px solid #fff;
     }
@@ -533,6 +534,57 @@
       color: var(--muted);
     }
 
+    .certificate-card {
+  max-width: 780px;
+}
+
+.certificate-label {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 14px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: var(--primary-dark);
+  background: rgba(255, 138, 61, 0.12);
+  border: 1px solid rgba(255, 138, 61, 0.28);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.certificate-proof {
+  margin-top: 20px;
+}
+
+.certificate-proof summary {
+  display: inline-block;
+  padding: 11px 17px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--primary);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  list-style: none;
+  transition: 0.25s ease;
+}
+
+.certificate-proof summary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.certificate-proof summary::-webkit-details-marker {
+  display: none;
+}
+
+.certificate-proof img {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+    
     .contact-wrap {
       background: linear-gradient(135deg, var(--secondary), #15233f);
       color: #fff;
@@ -713,6 +765,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="#certification">Certification</a></li>
         <li><a class="nav-cta" href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -948,6 +1001,46 @@
       </div>
     </section>
 
+    <section id="certifications" class="container">
+  <div class="section-head reveal">
+    <div>
+      <p class="section-kicker">Certification</p>
+      <h2 class="section-title">Sertifikasi Kompetensi</h2>
+    </div>
+
+    <p class="section-desc">
+      Sertifikasi profesional yang mendukung kompetensi saya dalam pengembangan website.
+    </p>
+  </div>
+
+  <article class="card certificate-card reveal">
+    <span class="certificate-label">BNSP</span>
+
+    <h3>Junior Web Programmer</h3>
+
+    <p>
+      Sertifikasi kompetensi Junior Web Programmer dari
+      Badan Nasional Sertifikasi Profesi pada Juni 2026.
+    </p>
+
+    <details class="certificate-proof">
+      <summary>📜 Lihat Sertifikat BNSP</summary>
+
+      <a
+        href="./images/sertifikat-bnsp.jpeg"
+        target="_blank"
+        rel="noopener"
+      >
+        <img
+          src="./images/sertifikat-bnsp.jpeg"
+          alt="Sertifikat Kompetensi BNSP Eka Hasbi Habibi"
+          loading="lazy"
+        />
+      </a>
+    </details>
+  </article>
+</section>
+    
     <section id="contact" class="container">
       <div class="contact-wrap reveal">
         <h2>Let's build something useful together.</h2>
