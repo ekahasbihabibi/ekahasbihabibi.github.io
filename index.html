@@ -474,57 +474,83 @@
     }
 
     .project-slider {
+  position: relative;
   width: 100%;
   margin-bottom: 22px;
+}
+
+.project-slider-viewport {
+  width: 100%;
   overflow: hidden;
+  border: 1px solid var(--line);
   border-radius: 18px;
+  background: var(--bg-soft);
 }
 
 .project-slider-track {
   display: flex;
-  width: max-content;
-  animation: projectScroll 24s linear infinite;
+  transition: transform 0.45s ease;
 }
 
-.project-slider-group {
-  display: flex;
-  gap: 12px;
-  padding-right: 12px;
-}
-
-.project-slider a {
-  flex: 0 0 auto;
-  width: min(340px, 72vw);
+.project-slide {
+  flex: 0 0 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--bg-soft);
 }
 
-.project-slider img {
+.project-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.project-slider a:hover img {
-  transform: scale(1.05);
+.project-slide:hover img {
+  transform: scale(1.04);
 }
 
-.project-slider:hover .project-slider-track {
-  animation-play-state: paused;
+.project-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(36, 59, 107, 0.85);
+  box-shadow: 0 8px 20px rgba(31, 41, 55, 0.20);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 900;
+  transform: translateY(-50%);
+  transition: 0.25s ease;
 }
 
-@keyframes projectScroll {
-  from {
-    transform: translateX(0);
-  }
+.project-arrow:hover {
+  background: var(--primary);
+  transform: translateY(-50%) scale(1.08);
+}
 
-  to {
-    transform: translateX(-50%);
-  }
+.project-prev {
+  left: 12px;
+}
+
+.project-next {
+  right: 12px;
+}
+
+.project-counter {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(31, 41, 55, 0.75);
+  font-size: 12px;
+  font-weight: 800;
 }
 
     .project-card h3 {
@@ -934,48 +960,72 @@
 
       <div class="grid-2">
         <article class="card project-card reveal">
-            <div class="project-slider">
-  <div class="project-slider-track">
+            <div class="project-slider" id="teamESlider">
 
-    <!-- Kumpulan gambar asli -->
-    <div class="project-slider-group">
-      <a href="./images/project-team-e-1.png" target="_blank">
-        <img src="./images/project-team-e-1.png" alt="Tampilan Project Team E 1" />
+  <div class="project-slider-viewport">
+    <div class="project-slider-track">
+
+      <a class="project-slide"
+         href="./images/project-team-e-1.png"
+         target="_blank">
+        <img
+          src="./images/project-team-e-1.png"
+          alt="Tampilan Project Team E 1"
+        />
       </a>
 
-      <a href="./images/project-team-e-2.png" target="_blank">
-        <img src="./images/project-team-e-2.png" alt="Tampilan Project Team E 2" />
+      <a class="project-slide"
+         href="./images/project-team-e-2.png"
+         target="_blank">
+        <img
+          src="./images/project-team-e-2.png"
+          alt="Tampilan Project Team E 2"
+        />
       </a>
 
-      <a href="./images/project-team-e-3.png" target="_blank">
-        <img src="./images/project-team-e-3.png" alt="Tampilan Project Team E 3" />
+      <a class="project-slide"
+         href="./images/project-team-e-3.png"
+         target="_blank">
+        <img
+          src="./images/project-team-e-3.png"
+          alt="Tampilan Project Team E 3"
+        />
       </a>
 
-      <a href="./images/project-team-e-4.png" target="_blank">
-        <img src="./images/project-team-e-4.png" alt="Tampilan Project Team E 4" />
+      <a class="project-slide"
+         href="./images/project-team-e-4.png"
+         target="_blank">
+        <img
+          src="./images/project-team-e-4.png"
+          alt="Tampilan Project Team E 4"
+        />
       </a>
+
     </div>
-
-    <!-- Duplikat untuk membuat pergerakan tersambung -->
-    <div class="project-slider-group" aria-hidden="true">
-      <a href="./images/project-team-e-1.png" target="_blank" tabindex="-1">
-        <img src="./images/project-team-e-1.png" alt="" />
-      </a>
-
-      <a href="./images/project-team-e-2.png" target="_blank" tabindex="-1">
-        <img src="./images/project-team-e-2.png" alt="" />
-      </a>
-
-      <a href="./images/project-team-e-3.png" target="_blank" tabindex="-1">
-        <img src="./images/project-team-e-3.png" alt="" />
-      </a>
-
-      <a href="./images/project-team-e-4.png" target="_blank" tabindex="-1">
-        <img src="./images/project-team-e-4.png" alt="" />
-      </a>
-    </div>
-
   </div>
+
+  <button
+    class="project-arrow project-prev"
+    type="button"
+    onclick="moveTeamESlider(-1)"
+    aria-label="Gambar sebelumnya"
+  >
+    &#10094;
+  </button>
+
+  <button
+    class="project-arrow project-next"
+    type="button"
+    onclick="moveTeamESlider(1)"
+    aria-label="Gambar berikutnya"
+  >
+    &#10095;
+  </button>
+
+  <div class="project-counter">
+    <span id="teamECounter">1</span> / 4
+  </div>
+
 </div>
           
           <span class="project-meta">🌐 Team Project</span>
@@ -1172,6 +1222,23 @@
     }, { threshold: 0.15 });
 
     revealEls.forEach((el) => observer.observe(el));
+
+    let teamESlideIndex = 0;
+
+function moveTeamESlider(arah) {
+  const slider = document.getElementById("teamESlider");
+  const track = slider.querySelector(".project-slider-track");
+  const slides = slider.querySelectorAll(".project-slide");
+  const counter = document.getElementById("teamECounter");
+
+  teamESlideIndex =
+    (teamESlideIndex + arah + slides.length) % slides.length;
+
+  track.style.transform =
+    `translateX(-${teamESlideIndex * 100}%)`;
+
+  counter.textContent = teamESlideIndex + 1;
+}
   </script>
 </body>
 </html>
