@@ -659,20 +659,17 @@
     }
 
     .certificate-viewport {
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
+      overflow: hidden;
       padding: 4px 0 14px;
     }
-
-    .certificate-viewport::-webkit-scrollbar { display: none; }
 
     .certificate-track {
       display: grid;
       grid-auto-flow: column;
       grid-auto-columns: calc((100% - 40px) / 3);
       gap: 20px;
+      transition: transform 0.45s ease;
+      will-change: transform;
     }
 
     .certificate-slide {
@@ -1376,28 +1373,73 @@ function moveTeamESlider(arah) {
 }
 
 const certificateViewport = document.getElementById("certificateViewport");
-const certificateSlides = document.querySelectorAll(".certificate-slide");
+const certificateTrack = document.querySelector(".certificate-track");
+const originalCertificateSlides = Array.from(document.querySelectorAll(".certificate-slide"));
 const certificateCounter = document.getElementById("certificateCounter");
 const certificateTotal = document.getElementById("certificateTotal");
+const certificateCloneCount = 3;
+let certificatePosition = certificateCloneCount;
+let certificateAnimating = false;
 
-certificateTotal.textContent = certificateSlides.length;
+certificateTotal.textContent = originalCertificateSlides.length;
+
+const firstCertificateClones = originalCertificateSlides
+  .slice(0, certificateCloneCount)
+  .map((slide) => slide.cloneNode(true));
+
+const lastCertificateClones = originalCertificateSlides
+  .slice(-certificateCloneCount)
+  .map((slide) => slide.cloneNode(true));
+
+lastCertificateClones.reverse().forEach((slide) => {
+  slide.setAttribute("aria-hidden", "true");
+  certificateTrack.prepend(slide);
+});
+
+firstCertificateClones.forEach((slide) => {
+  slide.setAttribute("aria-hidden", "true");
+  certificateTrack.append(slide);
+});
 
 function certificateStep() {
-  const firstSlide = certificateSlides[0];
-  const track = document.querySelector(".certificate-track");
-  return firstSlide.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0);
+  const firstSlide = certificateTrack.querySelector(".certificate-slide");
+  return firstSlide.offsetWidth + parseFloat(getComputedStyle(certificateTrack).columnGap || 0);
 }
 
-function updateCertificateCounter() {
-  const current = Math.round(certificateViewport.scrollLeft / certificateStep()) + 1;
-  certificateCounter.textContent = Math.min(current, certificateSlides.length);
+function logicalCertificateIndex() {
+  const total = originalCertificateSlides.length;
+  return ((certificatePosition - certificateCloneCount) % total + total) % total;
+}
+
+function updateCertificatePosition(animate = true) {
+  certificateTrack.style.transition = animate ? "transform 0.45s ease" : "none";
+  certificateTrack.style.transform = `translateX(-${certificatePosition * certificateStep()}px)`;
+  certificateCounter.textContent = logicalCertificateIndex() + 1;
 }
 
 function scrollCertificates(arah) {
-  certificateViewport.scrollBy({ left: arah * certificateStep(), behavior: "smooth" });
+  if (certificateAnimating) return;
+  certificateAnimating = true;
+  certificatePosition += arah;
+  updateCertificatePosition(true);
 }
 
-certificateViewport.addEventListener("scroll", updateCertificateCounter, { passive: true });
+certificateTrack.addEventListener("transitionend", () => {
+  const total = originalCertificateSlides.length;
+
+  if (certificatePosition >= certificateCloneCount + total) {
+    certificatePosition -= total;
+    updateCertificatePosition(false);
+  } else if (certificatePosition < certificateCloneCount) {
+    certificatePosition += total;
+    updateCertificatePosition(false);
+  }
+
+  certificateAnimating = false;
+});
+
+window.addEventListener("resize", () => updateCertificatePosition(false));
+updateCertificatePosition(false);
   </script>
 </body>
 </html>
