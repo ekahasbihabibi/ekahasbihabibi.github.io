@@ -628,8 +628,16 @@
     }
 
     .certificate-card {
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: none;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .certificate-card:hover {
+      transform: none;
+      box-shadow: none;
     }
 
 .certificate-label {
@@ -647,33 +655,64 @@
 
     .certificate-slider {
       position: relative;
-      margin-top: 22px;
+      margin-top: 24px;
     }
 
     .certificate-viewport {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: var(--bg-soft);
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 4px 0 14px;
     }
 
+    .certificate-viewport::-webkit-scrollbar { display: none; }
+
     .certificate-track {
-      display: flex;
-      transition: transform 0.45s ease;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 40px) / 3);
+      gap: 20px;
     }
 
     .certificate-slide {
-      flex: 0 0 100%;
-      display: block;
-      aspect-ratio: 16 / 10;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
+      scroll-snap-align: start;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 14px 34px rgba(31, 41, 55, 0.08);
+      transition: 0.25s ease;
+    }
+
+    .certificate-slide:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 44px rgba(31, 41, 55, 0.12);
     }
 
     .certificate-slide img {
       width: 100%;
-      height: 100%;
+      aspect-ratio: 4 / 3;
       object-fit: contain;
       background: #fff;
+    }
+
+    .certificate-info {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .certificate-info h3 {
+      margin-bottom: 7px;
+      font-size: 19px;
+    }
+
+    .certificate-info p {
+      font-size: 13px;
     }
 
     .certificate-arrow {
@@ -699,20 +738,15 @@
       transform: translateY(-50%) scale(1.08);
     }
 
-    .certificate-prev { left: 14px; }
-    .certificate-next { right: 14px; }
+    .certificate-prev { left: -22px; }
+    .certificate-next { right: -22px; }
 
     .certificate-counter {
-      position: absolute;
-      right: 14px;
-      bottom: 14px;
-      z-index: 5;
-      padding: 6px 11px;
-      border-radius: 999px;
-      color: #fff;
-      background: rgba(31, 41, 55, 0.78);
-      font-size: 12px;
-      font-weight: 800;
+      margin-top: 8px;
+      text-align: center;
+      color: var(--secondary);
+      font-size: 13px;
+      font-weight: 900;
     }
     
     .contact-wrap {
@@ -829,6 +863,14 @@
         grid-template-columns: 1fr;
         gap: 10px;
       }
+
+      .certificate-track {
+        grid-auto-columns: calc((100% - 18px) / 2);
+        gap: 18px;
+      }
+
+      .certificate-prev { left: 8px; }
+      .certificate-next { right: 8px; }
     }
 
     @media (max-width: 640px) {
@@ -871,6 +913,18 @@
       .timeline-item,
       .contact-wrap {
         padding: 24px;
+      }
+
+      .certificate-card { padding: 0; }
+
+      .certificate-track {
+        grid-auto-columns: 88%;
+        gap: 14px;
+      }
+
+      .certificate-arrow {
+        width: 40px;
+        height: 40px;
       }
     }
   </style>
@@ -1212,36 +1266,56 @@
   </div>
 
   <article class="card certificate-card reveal">
-    <span class="certificate-label">Certificates</span>
-    <h3>Sertifikat & Pelatihan</h3>
-    <p>Klik sertifikat untuk melihat gambar dalam ukuran penuh.</p>
-
     <div class="certificate-slider" id="certificateSlider">
-      <div class="certificate-viewport">
+      <div class="certificate-viewport" id="certificateViewport">
         <div class="certificate-track">
           <a class="certificate-slide" href="./images/sertifikat-bnsp.jpeg" target="_blank" rel="noopener">
             <img src="./images/sertifikat-bnsp.jpeg" alt="Sertifikat BNSP Junior Web Programmer" loading="lazy" />
+            <div class="certificate-info">
+              <h3>Junior Web Programmer</h3>
+              <p>Badan Nasional Sertifikasi Profesi (BNSP)</p>
+            </div>
           </a>
           <a class="certificate-slide" href="./images/sertifikat-2.jpeg" target="_blank" rel="noopener">
             <img src="./images/sertifikat-2.jpeg" alt="Sertifikat 2 Eka Hasbi Habibi" loading="lazy" />
+            <div class="certificate-info">
+              <h3>Nama Sertifikat Kedua</h3>
+              <p>Nama lembaga penerbit</p>
+            </div>
           </a>
           <a class="certificate-slide" href="./images/sertifikat-3.jpeg" target="_blank" rel="noopener">
             <img src="./images/sertifikat-3.jpeg" alt="Sertifikat 3 Eka Hasbi Habibi" loading="lazy" />
+            <div class="certificate-info">
+              <h3>Nama Sertifikat Ketiga</h3>
+              <p>Nama lembaga penerbit</p>
+            </div>
           </a>
           <a class="certificate-slide" href="./images/sertifikat-4.jpeg" target="_blank" rel="noopener">
             <img src="./images/sertifikat-4.jpeg" alt="Sertifikat 4 Eka Hasbi Habibi" loading="lazy" />
+            <div class="certificate-info">
+              <h3>Nama Sertifikat Keempat</h3>
+              <p>Nama lembaga penerbit</p>
+            </div>
           </a>
           <a class="certificate-slide" href="./images/sertifikat-5.jpeg" target="_blank" rel="noopener">
             <img src="./images/sertifikat-5.jpeg" alt="Sertifikat 5 Eka Hasbi Habibi" loading="lazy" />
+            <div class="certificate-info">
+              <h3>Nama Sertifikat Kelima</h3>
+              <p>Nama lembaga penerbit</p>
+            </div>
           </a>
           <a class="certificate-slide" href="./images/sertifikat-6.jpeg" target="_blank" rel="noopener">
             <img src="./images/sertifikat-6.jpeg" alt="Sertifikat 6 Eka Hasbi Habibi" loading="lazy" />
+            <div class="certificate-info">
+              <h3>Nama Sertifikat Keenam</h3>
+              <p>Nama lembaga penerbit</p>
+            </div>
           </a>
         </div>
       </div>
 
-      <button class="certificate-arrow certificate-prev" type="button" onclick="moveCertificateSlider(-1)" aria-label="Sertifikat sebelumnya">&#10094;</button>
-      <button class="certificate-arrow certificate-next" type="button" onclick="moveCertificateSlider(1)" aria-label="Sertifikat berikutnya">&#10095;</button>
+      <button class="certificate-arrow certificate-prev" type="button" onclick="scrollCertificates(-1)" aria-label="Sertifikat sebelumnya">&#10094;</button>
+      <button class="certificate-arrow certificate-next" type="button" onclick="scrollCertificates(1)" aria-label="Sertifikat berikutnya">&#10095;</button>
 
       <div class="certificate-counter">
         <span id="certificateCounter">1</span> / <span id="certificateTotal">6</span>
@@ -1301,24 +1375,29 @@ function moveTeamESlider(arah) {
   counter.textContent = teamESlideIndex + 1;
 }
 
-let certificateSlideIndex = 0;
+const certificateViewport = document.getElementById("certificateViewport");
+const certificateSlides = document.querySelectorAll(".certificate-slide");
+const certificateCounter = document.getElementById("certificateCounter");
+const certificateTotal = document.getElementById("certificateTotal");
 
-function moveCertificateSlider(arah) {
-  const slider = document.getElementById("certificateSlider");
-  const track = slider.querySelector(".certificate-track");
-  const slides = slider.querySelectorAll(".certificate-slide");
-  const counter = document.getElementById("certificateCounter");
-  const total = document.getElementById("certificateTotal");
+certificateTotal.textContent = certificateSlides.length;
 
-  certificateSlideIndex =
-    (certificateSlideIndex + arah + slides.length) % slides.length;
-
-  track.style.transform =
-    `translateX(-${certificateSlideIndex * 100}%)`;
-
-  counter.textContent = certificateSlideIndex + 1;
-  total.textContent = slides.length;
+function certificateStep() {
+  const firstSlide = certificateSlides[0];
+  const track = document.querySelector(".certificate-track");
+  return firstSlide.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0);
 }
+
+function updateCertificateCounter() {
+  const current = Math.round(certificateViewport.scrollLeft / certificateStep()) + 1;
+  certificateCounter.textContent = Math.min(current, certificateSlides.length);
+}
+
+function scrollCertificates(arah) {
+  certificateViewport.scrollBy({ left: arah * certificateStep(), behavior: "smooth" });
+}
+
+certificateViewport.addEventListener("scroll", updateCertificateCounter, { passive: true });
   </script>
 </body>
 </html>
