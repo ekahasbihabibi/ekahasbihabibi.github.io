@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume - Eka Hasbi Habibi</title>
+  <meta name="description" content="Resume dan CV Eka Hasbi Habibi." />
+
+  <style>
+    :root {
+      --bg: #fff7ee;
+      --text: #1f2937;
+      --muted: #667085;
+      --primary: #ff8a3d;
+      --primary-dark: #e8641f;
+      --secondary: #243b6b;
+      --card: #ffffff;
+      --line: #f0dfcf;
+      --shadow: 0 22px 55px rgba(55, 34, 15, 0.13);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255, 138, 61, 0.20), transparent 26%),
+        radial-gradient(circle at 92% 8%, rgba(36, 59, 107, 0.15), transparent 23%),
+        var(--bg);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .navbar {
+      border-bottom: 1px solid rgba(240, 223, 207, 0.8);
+      background: rgba(255, 247, 238, 0.82);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--secondary);
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), #ffbe79);
+    }
+
+    .back-link {
+      color: var(--secondary);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .back-link:hover { color: var(--primary-dark); }
+
+    main {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      place-items: center;
+      padding: 70px 0;
+    }
+
+    .resume-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .kicker {
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      color: var(--secondary);
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1;
+      letter-spacing: -0.065em;
+    }
+
+    .description {
+      max-width: 580px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: var(--primary);
+      box-shadow: 0 16px 30px rgba(255, 138, 61, 0.30);
+    }
+
+    .btn-outline {
+      color: var(--secondary);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .document-card {
+      position: relative;
+      padding: 38px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .document-card::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 138, 61, 0.14);
+    }
+
+    .document-icon {
+      width: 82px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      border-radius: 24px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--secondary), #15233f);
+      font-size: 36px;
+    }
+
+    .document-card h2 {
+      margin-bottom: 8px;
+      color: var(--secondary);
+      font-size: 28px;
+    }
+
+    .document-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .file-meta {
+      display: inline-flex;
+      margin-top: 20px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: rgba(255, 138, 61, 0.12);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .pdf-preview {
+      grid-column: 1 / -1;
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .pdf-preview-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pdf-preview-head h2 {
+      color: var(--secondary);
+      font-size: 18px;
+    }
+
+    .pdf-preview iframe {
+      display: block;
+      width: 100%;
+      height: 900px;
+      border: 0;
+      background: #f4f4f4;
+    }
+
+    .pdf-fallback {
+      padding: 18px 22px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .resume-wrap { grid-template-columns: 1fr; }
+      main { padding: 50px 0; }
+      .pdf-preview iframe { height: 720px; }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .nav-inner { min-height: 66px; }
+      .document-card { padding: 28px; }
+      .actions { display: grid; }
+      .btn { width: 100%; }
+      .pdf-preview iframe { height: 600px; }
+      .pdf-preview-head { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">EH</span>
+        <span>Eka Hasbi</span>
+      </a>
+
+      <a class="back-link" href="./index.html">← Kembali ke Portfolio</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container resume-wrap">
+      <section>
+        <p class="kicker">Resume</p>
+        <h1>Curriculum Vitae</h1>
+        <p class="description">
+          Resume profesional yang merangkum pendidikan, pengalaman, proyek,
+          sertifikasi, serta kompetensi saya dalam pengembangan sistem informasi.
+        </p>
+
+        <div class="actions">
+          <a
+            class="btn btn-primary"
+            href="./CV-Eka-Hasbi-Habibi.pdf"
+            download="CV-Eka-Hasbi-Habibi.pdf"
+          >
+            ↓ Download CV
+          </a>
+
+          <a
+            class="btn btn-outline"
+            href="./CV-Eka-Hasbi-Habibi.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            Lihat CV
+          </a>
+        </div>
+      </section>
+
+      <article class="document-card">
+        <div class="document-icon" aria-hidden="true">📄</div>
+        <h2>CV Eka Hasbi Habibi</h2>
+        <p>
+          Informasi lengkap mengenai profil profesional, pengalaman magang,
+          project pengembangan aplikasi, keterampilan, dan sertifikasi.
+        </p>
+        <span class="file-meta">PDF DOCUMENT</span>
+      </article>
+
+      <section class="pdf-preview" aria-label="Pratinjau CV Eka Hasbi Habibi">
+        <div class="pdf-preview-head">
+          <h2>Pratinjau CV</h2>
+          <a
+            class="btn btn-primary"
+            href="./CV-Eka-Hasbi-Habibi.pdf"
+            download="CV-Eka-Hasbi-Habibi.pdf"
+          >
+            ↓ Download CV
+          </a>
+        </div>
+
+        <iframe
+          src="./CV-Eka-Hasbi-Habibi.pdf#view=FitH&toolbar=1"
+          title="CV Eka Hasbi Habibi"
+          loading="lazy"
+        ></iframe>
+
+        <p class="pdf-fallback">
+          Jika CV tidak tampil di perangkat Anda,
+          <a href="./CV-Eka-Hasbi-Habibi.pdf" target="_blank" rel="noopener">buka PDF di tab baru</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
