@@ -1121,6 +1121,49 @@
 
       <div class="grid-2">
         <article class="card project-card reveal">
+          <div class="project-slider" id="cafeSlider">
+            <div class="project-slider-viewport">
+              <div class="project-slider-track">
+                <a class="project-slide" href="./images/project-kafe-1.png" target="_blank" rel="noopener">
+                  <img src="./images/project-kafe-1.png" alt="Tampilan SPK Kafe Medan Timur 1" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-kafe-2.png" target="_blank" rel="noopener">
+                  <img src="./images/project-kafe-2.png" alt="Tampilan SPK Kafe Medan Timur 2" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-kafe-3.png" target="_blank" rel="noopener">
+                  <img src="./images/project-kafe-3.png" alt="Tampilan SPK Kafe Medan Timur 3" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-kafe-4.png" target="_blank" rel="noopener">
+                  <img src="./images/project-kafe-4.png" alt="Tampilan SPK Kafe Medan Timur 4" loading="lazy" />
+                </a>
+              </div>
+            </div>
+
+            <button class="project-arrow project-prev" type="button" onclick="moveCafeSlider(-1)" aria-label="Gambar SPK Kafe sebelumnya">&#10094;</button>
+            <button class="project-arrow project-next" type="button" onclick="moveCafeSlider(1)" aria-label="Gambar SPK Kafe berikutnya">&#10095;</button>
+
+            <div class="project-counter">
+              <span id="cafeCounter">1</span> / 4
+            </div>
+          </div>
+
+          <span class="project-meta">📍 Decision Support System</span>
+          <h3>SPK Pemilihan Kafe Medan Timur</h3>
+          <p>
+            Sistem pendukung keputusan untuk merekomendasikan kafe dan menu termurah di wilayah Medan Timur,
+            dilengkapi pencarian rute menggunakan algoritma Dijkstra dan visualisasi peta digital.
+          </p>
+          <div class="tags">
+            <span class="tag">CodeIgniter 4</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Dijkstra</span>
+            <span class="tag">Leaflet</span>
+          </div>
+          <a class="project-link" href="https://github.com/ekahasbihabibi/SPK-Kafe-Medan-Timur-CI4-rekomendasi-menu-termurah-20260817" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+
+        <article class="card project-card reveal">
             <div class="project-slider" id="teamESlider">
 
   <div class="project-slider-viewport">
@@ -1488,6 +1531,23 @@
     }, { threshold: 0.15 });
 
     revealEls.forEach((el) => observer.observe(el));
+
+    let cafeSlideIndex = 0;
+
+function moveCafeSlider(arah) {
+  const slider = document.getElementById("cafeSlider");
+  const track = slider.querySelector(".project-slider-track");
+  const slides = slider.querySelectorAll(".project-slide");
+  const counter = document.getElementById("cafeCounter");
+
+  cafeSlideIndex =
+    (cafeSlideIndex + arah + slides.length) % slides.length;
+
+  track.style.transform =
+    `translateX(-${cafeSlideIndex * 100}%)`;
+
+  counter.textContent = cafeSlideIndex + 1;
+}
 
     let teamESlideIndex = 0;
 
