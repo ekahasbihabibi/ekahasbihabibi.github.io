@@ -350,11 +350,12 @@
 
     #home { order: 1; }
     #certifications { order: 2; }
-    #projects { order: 3; }
-    #skills { order: 4; }
-    #experience { order: 5; }
-    #education { order: 6; }
-    #contact { order: 7; }
+    #resume { order: 3; }
+    #projects { order: 4; }
+    #skills { order: 5; }
+    #experience { order: 6; }
+    #education { order: 7; }
+    #contact { order: 8; }
 
     section {
       padding: 84px 0;
@@ -745,6 +746,37 @@
       font-size: 13px;
       font-weight: 900;
     }
+
+    .resume-card {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      align-items: center;
+      gap: 26px;
+      padding: 34px;
+    }
+
+    .resume-icon {
+      width: 90px;
+      height: 90px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      box-shadow: 0 14px 28px rgba(255, 138, 61, 0.28);
+      font-size: 38px;
+    }
+
+    .resume-content h3 {
+      margin-bottom: 6px;
+    }
+
+    .resume-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+    }
     
     .contact-wrap {
       background: linear-gradient(135deg, var(--secondary), #15233f);
@@ -861,6 +893,20 @@
         gap: 10px;
       }
 
+      .resume-card {
+        grid-template-columns: 72px 1fr;
+      }
+
+      .resume-icon {
+        width: 72px;
+        height: 72px;
+      }
+
+      .resume-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+      }
+
       .certificate-track {
         grid-auto-columns: calc((100% - 18px) / 2);
         gap: 18px;
@@ -923,6 +969,20 @@
         width: 40px;
         height: 40px;
       }
+
+      .resume-card {
+        display: block;
+        text-align: center;
+      }
+
+      .resume-icon {
+        margin: 0 auto 18px;
+      }
+
+      .resume-actions {
+        justify-content: center;
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
@@ -942,12 +1002,12 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#certifications">Certification</a></li>
-        <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
-       
+        <li><a href="#certifications">Certification</a></li>
+        <li><a href="#resume">Resume</a></li>
         <li><a class="nav-cta" href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -1342,8 +1402,8 @@
             />
           
             <div class="certificate-info">
-              <h3>Pemograman Komputer</h3>
-              <p>CODEPOLITAN</p>
+              <h3>Nama Sertifikat Kedelapan</h3>
+              <p>Nama lembaga penerbit</p>
             </div>
           </a>
                     <!-- SERTIFIKAT KE-9 -->
@@ -1360,27 +1420,27 @@
             />
           
             <div class="certificate-info">
-              <h3>Text Editor</h3>
-              <p>CODEPOLITAN</p>
+              <h3>Nama Sertifikat Kesembilan</h3>
+              <p>Nama lembaga penerbit</p>
             </div>
           </a>
           
           <!-- SERTIFIKAT KE-10 -->
           <a
             class="certificate-slide"
-            href="./images/sertifikat-10-landscape.jpeg"
+            href="./images/sertifikat-10.jpeg"
             target="_blank"
             rel="noopener"
           >
             <img
-              src="./images/sertifikat-10-landscape.jpeg"
+              src="./images/sertifikat-10.jpeg"
               alt="Sertifikat 10 Eka Hasbi Habibi"
               loading="lazy"
             />
           
             <div class="certificate-info">
-              <h3>Sekretaris Kuliah Kerja Nyata</h3>
-              <p>Desa Bengkel Serdang Bedagai</p>
+              <h3>Nama Sertifikat Kesepuluh</h3>
+              <p>Nama lembaga penerbit</p>
             </div>
           </a>
         </div>
@@ -1395,6 +1455,46 @@
     </div>
   </article>
 </section>
+
+    <section id="resume" class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Resume</p>
+          <h2 class="section-title">Curriculum Vitae</h2>
+        </div>
+        <p class="section-desc">
+          Lihat atau unduh CV terbaru untuk mengetahui pengalaman, pendidikan, proyek, dan kompetensi saya.
+        </p>
+      </div>
+
+      <article class="card resume-card reveal">
+        <div class="resume-icon" aria-hidden="true">📄</div>
+
+        <div class="resume-content">
+          <h3>CV Eka Hasbi Habibi</h3>
+          <p>Format PDF · Siap dilihat dan diunduh</p>
+        </div>
+
+        <div class="resume-actions">
+          <a
+            class="btn btn-outline"
+            href="./CV-Eka-Hasbi-Habibi.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            Lihat CV
+          </a>
+
+          <a
+            class="btn btn-primary"
+            href="./CV-Eka-Hasbi-Habibi.pdf"
+            download="CV-Eka-Hasbi-Habibi.pdf"
+          >
+            ↓ Download CV
+          </a>
+        </div>
+      </article>
+    </section>
     
     <section id="contact" class="container">
       <div class="contact-wrap reveal">
