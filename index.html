@@ -1322,15 +1322,42 @@
         </article>
 
         <article class="card project-card reveal" style="order: 5;">
-          <span class="project-meta">📚 Academic</span>
-          <h3>Web Programming Tasks</h3>
-          <p>Collection of PHP-based web programming assignments demonstrating server-side development fundamentals.</p>
-          <div class="tags">
-            <span class="tag">PHP</span>
-            <span class="tag">Academic</span>
-            <span class="tag">Web</span>
+          <div class="project-slider" id="gymSlider">
+            <div class="project-slider-viewport">
+              <div class="project-slider-track">
+                <a class="project-slide" href="./images/project-gym-1.png" target="_blank" rel="noopener">
+                  <img src="./images/project-gym-1.png" alt="Tampilan Gym Rule-Based System 1" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-gym-2.png" target="_blank" rel="noopener">
+                  <img src="./images/project-gym-2.png" alt="Tampilan Gym Rule-Based System 2" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-gym-3.png" target="_blank" rel="noopener">
+                  <img src="./images/project-gym-3.png" alt="Tampilan Gym Rule-Based System 3" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-gym-4.png" target="_blank" rel="noopener">
+                  <img src="./images/project-gym-4.png" alt="Tampilan Gym Rule-Based System 4" loading="lazy" />
+                </a>
+              </div>
+            </div>
+
+            <button class="project-arrow project-prev" type="button" onclick="moveGymSlider(-1)" aria-label="Gambar Gym sebelumnya">&#10094;</button>
+            <button class="project-arrow project-next" type="button" onclick="moveGymSlider(1)" aria-label="Gambar Gym berikutnya">&#10095;</button>
+
+            <div class="project-counter">
+              <span id="gymCounter">1</span> / 4
+            </div>
           </div>
-          <a class="project-link" href="https://github.com/ekahasbihabibi/SI_F1_22" target="_blank">View on GitHub →</a>
+
+          <span class="project-meta">🏋️ Rule-Based Web Application</span>
+          <h3>Gym Recommendation Rule-Based System</h3>
+          <p>A Laravel-based web application that applies rule-based logic to provide gym-related recommendations based on user criteria and input.</p>
+          <div class="tags">
+            <span class="tag">Laravel</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Rule-Based System</span>
+          </div>
+          <a class="project-link" href="https://github.com/ekahasbihabibi/gym-rule-based-laravel" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
       </div>
     </section>
@@ -1585,6 +1612,23 @@
     }, { threshold: 0.15 });
 
     revealEls.forEach((el) => observer.observe(el));
+
+    let gymSlideIndex = 0;
+
+function moveGymSlider(arah) {
+  const slider = document.getElementById("gymSlider");
+  const track = slider.querySelector(".project-slider-track");
+  const slides = slider.querySelectorAll(".project-slide");
+  const counter = document.getElementById("gymCounter");
+
+  gymSlideIndex =
+    (gymSlideIndex + arah + slides.length) % slides.length;
+
+  track.style.transform =
+    `translateX(-${gymSlideIndex * 100}%)`;
+
+  counter.textContent = gymSlideIndex + 1;
+}
 
     let archiveSlideIndex = 0;
 
