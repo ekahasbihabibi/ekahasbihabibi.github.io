@@ -1120,7 +1120,7 @@
       </div>
 
       <div class="grid-2">
-        <article class="card project-card reveal">
+        <article class="card project-card reveal" style="order: 1;">
           <div class="project-slider" id="cafeSlider">
             <div class="project-slider-viewport">
               <div class="project-slider-track">
@@ -1163,7 +1163,7 @@
           <a class="project-link" href="https://github.com/ekahasbihabibi/SPK-Kafe-Medan-Timur-CI4" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
 
-        <article class="card project-card reveal">
+        <article class="card project-card reveal" style="order: 3;">
             <div class="project-slider" id="teamESlider">
 
   <div class="project-slider-viewport">
@@ -1243,7 +1243,7 @@
           <a class="project-link" href="https://github.com/ekahasbihabibi/project-web-dasar-team-E" target="_blank">View on GitHub →</a>
         </article>
 
-        <article class="card project-card reveal">
+        <article class="card project-card reveal" style="order: 4;">
           <span class="project-meta">🏨 Web App</span>
           <h3>Room Availability System</h3>
           <p>UAS project — a room availability management system built with PHP backend for web programming course.</p>
@@ -1255,7 +1255,33 @@
           <a class="project-link" href="https://github.com/ekahasbihabibi/UAS_PemogramanWebDasar_F1-Si_EkaHasbiHabibi_2209010218_ketersediaan_kamar" target="_blank">View on GitHub →</a>
         </article>
 
-        <article class="card project-card reveal">
+        <article class="card project-card reveal" style="order: 2;">
+          <div class="project-slider" id="studyBuddySlider">
+            <div class="project-slider-viewport">
+              <div class="project-slider-track">
+                <a class="project-slide" href="./images/project-studybuddy-1.png" target="_blank" rel="noopener">
+                  <img src="./images/project-studybuddy-1.png" alt="Tampilan StudyBuddy Web 1" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-studybuddy-2.png" target="_blank" rel="noopener">
+                  <img src="./images/project-studybuddy-2.png" alt="Tampilan StudyBuddy Web 2" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-studybuddy-3.png" target="_blank" rel="noopener">
+                  <img src="./images/project-studybuddy-3.png" alt="Tampilan StudyBuddy Web 3" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-studybuddy-4.png" target="_blank" rel="noopener">
+                  <img src="./images/project-studybuddy-4.png" alt="Tampilan StudyBuddy Web 4" loading="lazy" />
+                </a>
+              </div>
+            </div>
+
+            <button class="project-arrow project-prev" type="button" onclick="moveStudyBuddySlider(-1)" aria-label="Gambar StudyBuddy sebelumnya">&#10094;</button>
+            <button class="project-arrow project-next" type="button" onclick="moveStudyBuddySlider(1)" aria-label="Gambar StudyBuddy berikutnya">&#10095;</button>
+
+            <div class="project-counter">
+              <span id="studyBuddyCounter">1</span> / 4
+            </div>
+          </div>
+
           <span class="project-meta">🌐 Web Application</span>
           <h3>StudyBuddy Web</h3>
           <p>A web-based study companion designed to support students in organizing and managing their learning activities.</p>
@@ -1268,7 +1294,7 @@
           <a class="project-link" href="https://github.com/ekahasbihabibi/studybuddy-web" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
 
-        <article class="card project-card reveal">
+        <article class="card project-card reveal" style="order: 5;">
           <span class="project-meta">📚 Academic</span>
           <h3>Web Programming Tasks</h3>
           <p>Collection of PHP-based web programming assignments demonstrating server-side development fundamentals.</p>
@@ -1532,6 +1558,23 @@
     }, { threshold: 0.15 });
 
     revealEls.forEach((el) => observer.observe(el));
+
+    let studyBuddySlideIndex = 0;
+
+function moveStudyBuddySlider(arah) {
+  const slider = document.getElementById("studyBuddySlider");
+  const track = slider.querySelector(".project-slider-track");
+  const slides = slider.querySelectorAll(".project-slide");
+  const counter = document.getElementById("studyBuddyCounter");
+
+  studyBuddySlideIndex =
+    (studyBuddySlideIndex + arah + slides.length) % slides.length;
+
+  track.style.transform =
+    `translateX(-${studyBuddySlideIndex * 100}%)`;
+
+  counter.textContent = studyBuddySlideIndex + 1;
+}
 
     let cafeSlideIndex = 0;
 
