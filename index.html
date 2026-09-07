@@ -1244,15 +1244,42 @@
         </article>
 
         <article class="card project-card reveal" style="order: 4;">
-          <span class="project-meta">🏨 Web App</span>
-          <h3>Room Availability System</h3>
-          <p>UAS project — a room availability management system built with PHP backend for web programming course.</p>
+          <div class="project-slider" id="archiveSlider">
+            <div class="project-slider-viewport">
+              <div class="project-slider-track">
+                <a class="project-slide" href="./images/project-arsip-surat-1.png" target="_blank" rel="noopener">
+                  <img src="./images/project-arsip-surat-1.png" alt="Tampilan Sistem Arsip Surat 1" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-arsip-surat-2.png" target="_blank" rel="noopener">
+                  <img src="./images/project-arsip-surat-2.png" alt="Tampilan Sistem Arsip Surat 2" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-arsip-surat-3.png" target="_blank" rel="noopener">
+                  <img src="./images/project-arsip-surat-3.png" alt="Tampilan Sistem Arsip Surat 3" loading="lazy" />
+                </a>
+                <a class="project-slide" href="./images/project-arsip-surat-4.png" target="_blank" rel="noopener">
+                  <img src="./images/project-arsip-surat-4.png" alt="Tampilan Sistem Arsip Surat 4" loading="lazy" />
+                </a>
+              </div>
+            </div>
+
+            <button class="project-arrow project-prev" type="button" onclick="moveArchiveSlider(-1)" aria-label="Gambar Arsip Surat sebelumnya">&#10094;</button>
+            <button class="project-arrow project-next" type="button" onclick="moveArchiveSlider(1)" aria-label="Gambar Arsip Surat berikutnya">&#10095;</button>
+
+            <div class="project-counter">
+              <span id="archiveCounter">1</span> / 4
+            </div>
+          </div>
+
+          <span class="project-meta">🗂️ Document Management System</span>
+          <h3>Sistem Informasi Arsip Surat</h3>
+          <p>A web-based information system for managing incoming and outgoing correspondence, organizing document records, and simplifying archive searches.</p>
           <div class="tags">
             <span class="tag">PHP</span>
-            <span class="tag">Database</span>
+            <span class="tag">MySQL</span>
             <span class="tag">Web App</span>
+            <span class="tag">Document Management</span>
           </div>
-          <a class="project-link" href="https://github.com/ekahasbihabibi/UAS_PemogramanWebDasar_F1-Si_EkaHasbiHabibi_2209010218_ketersediaan_kamar" target="_blank">View on GitHub →</a>
+          <a class="project-link" href="https://github.com/ekahasbihabibi/arsip-surat" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
 
         <article class="card project-card reveal" style="order: 2;">
@@ -1558,6 +1585,23 @@
     }, { threshold: 0.15 });
 
     revealEls.forEach((el) => observer.observe(el));
+
+    let archiveSlideIndex = 0;
+
+function moveArchiveSlider(arah) {
+  const slider = document.getElementById("archiveSlider");
+  const track = slider.querySelector(".project-slider-track");
+  const slides = slider.querySelectorAll(".project-slide");
+  const counter = document.getElementById("archiveCounter");
+
+  archiveSlideIndex =
+    (archiveSlideIndex + arah + slides.length) % slides.length;
+
+  track.style.transform =
+    `translateX(-${archiveSlideIndex * 100}%)`;
+
+  counter.textContent = archiveSlideIndex + 1;
+}
 
     let studyBuddySlideIndex = 0;
 
