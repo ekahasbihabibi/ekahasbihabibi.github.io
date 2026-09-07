@@ -123,6 +123,29 @@
       background: rgba(255, 138, 61, 0.08);
     }
 
+    .language-switcher {
+      position: relative;
+    }
+
+    .language-select {
+      min-width: 72px;
+      padding: 10px 30px 10px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--secondary);
+      background: rgba(255, 255, 255, 0.78);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .language-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 138, 61, 0.14);
+    }
+
     /* HERO */
     .hero {
       min-height: calc(100vh - 74px);
@@ -1014,6 +1037,12 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="./resume.html">Resume</a></li>
+        <li class="language-switcher">
+          <select id="languageSelect" class="language-select" aria-label="Select language">
+            <option value="en" selected>🌐 EN</option>
+            <option value="id">🌐 ID</option>
+          </select>
+        </li>
         <li><a class="nav-cta" href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -1063,7 +1092,7 @@
       <div class="section-head reveal">
         <div>
           <p class="section-kicker">Hard Skills</p>
-          <h2 class="section-title">Tools & kemampuan yang saya gunakan</h2>
+          <h2 class="section-title">Tools and technologies I use</h2>
         </div>
       </div>
 
@@ -1117,7 +1146,7 @@
       <div class="section-head reveal">
         <div>
           <p class="section-kicker">Projects</p>
-          <h2 class="section-title">Beberapa project publik</h2>
+          <h2 class="section-title">Selected public projects</h2>
         </div>
       </div>
 
@@ -1368,7 +1397,7 @@
       <div class="section-head reveal">
         <div>
           <p class="section-kicker">Experiences</p>
-          <h2 class="section-title">Pengalaman organisasi & magang</h2>
+          <h2 class="section-title">Organizational and internship experience</h2>
         </div>
       </div>
 
@@ -1406,10 +1435,10 @@
       <div class="section-head reveal">
         <div>
           <p class="section-kicker">Education</p>
-          <h2 class="section-title">Background pendidikan</h2>
+          <h2 class="section-title">Educational background</h2>
         </div>
         <p class="section-desc">
-          Informasi utama tentang pendidikan, lokasi, bahasa, dan bidang minat.
+          Key information about education, location, languages, and areas of interest.
         </p>
       </div>
 
@@ -1440,11 +1469,11 @@
   <div class="section-head reveal">
     <div>
       <p class="section-kicker">Certification</p>
-      <h2 class="section-title">Sertifikasi Kompetensi & Lisensi</h2>
+      <h2 class="section-title">Competency Certifications & Licenses</h2>
     </div>
 
     <p class="section-desc">
-      sertifikat kompetensi, workshop, dan pelatihan.
+      Competency certificates, workshops, and training.
     </p>
   </div>
 
@@ -1585,7 +1614,7 @@
       <div class="contact-wrap reveal">
         <h2>Let's build something useful together.</h2>
         <p>
-          Terbuka untuk peluang magang, kolaborasi proyek, dan diskusi seputar Web Development, UI/UX Design, Data Analysis, dan Project Documentation.
+          Open to internship opportunities, project collaborations, and discussions about Web Development, UI/UX Design, Data Analysis, and Project Documentation.
         </p>
         <div class="contact-links">
           <a
@@ -1608,6 +1637,108 @@
   </footer>
 
   <script>
+    const translations = [
+      ["Certification", "Sertifikasi"],
+      ["Projects", "Proyek"],
+      ["Skills", "Keahlian"],
+      ["Experience", "Pengalaman"],
+      ["Experiences", "Pengalaman"],
+      ["Education", "Pendidikan"],
+      ["Resume", "Resume"],
+      ["Contact", "Kontak"],
+      ["👋 Hi, There!", "👋 Halo!"],
+      ["I'm Eka", "Saya Eka"],
+      ["Information System Student · Web Developer · UI/UX · Data Analyst", "Lulusan Sistem Informasi · Web Developer · UI/UX · Analis Data"],
+      ["Information Systems graduate with hands-on experience in web application development, system analysis, and project documentation. I am passionate about building reliable, user-focused digital solutions through structured problem-solving, clean interfaces, and data-driven thinking.", "Lulusan Sistem Informasi dengan pengalaman langsung dalam pengembangan aplikasi web, analisis sistem, dan dokumentasi proyek. Saya antusias membangun solusi digital yang andal dan berorientasi pada pengguna melalui pemecahan masalah yang terstruktur, antarmuka yang bersih, dan pemikiran berbasis data."],
+      ["Get in Touch →", "Hubungi Saya →"],
+      ["↓ Download CV", "↓ Unduh CV"],
+      ["Hard Skills", "Keahlian Teknis"],
+      ["Tools and technologies I use", "Tools dan kemampuan yang saya gunakan"],
+      ["Fundamentals of web development and simple applications.", "Dasar pengembangan web dan aplikasi sederhana."],
+      ["Creating workflows, interface designs, and supporting visuals.", "Membuat alur, rancangan tampilan, dan visual pendukung."],
+      ["Project administration, documentation, and data analysis.", "Administrasi proyek, dokumentasi, dan analisis data."],
+      ["Selected public projects", "Beberapa proyek publik"],
+      ["📍 Decision Support System", "📍 Decision Support System"],
+      ["A decision support system that recommends cafés and the most affordable menus in East Medan, featuring route searching with Dijkstra's algorithm and digital map visualization.", "Sistem pendukung keputusan untuk merekomendasikan kafe dan menu termurah di wilayah Medan Timur, dilengkapi pencarian rute menggunakan algoritma Dijkstra dan visualisasi peta digital."],
+      ["🌐 Team Project", "🌐 Team Project"],
+      ["Collaborative web development project built with a team as part of foundational web programming coursework.", "Proyek pengembangan web kolaboratif yang dibuat bersama tim sebagai bagian dari mata kuliah dasar pemrograman web."],
+      ["🗂️ Document Management System", "🗂️ Document Management System"],
+      ["Correspondence Archive Information System", "Sistem Informasi Arsip Surat"],
+      ["A web-based information system for managing incoming and outgoing correspondence, organizing document records, and simplifying archive searches.", "Sistem informasi berbasis web untuk mengelola surat masuk dan keluar, menata catatan dokumen, serta mempermudah pencarian arsip."],
+      ["🌐 Web Application", "🌐 Web Application"],
+      ["A web-based study companion designed to support students in organizing and managing their learning activities.", "Pendamping belajar berbasis web yang dirancang untuk membantu siswa mengatur dan mengelola aktivitas belajar mereka."],
+      ["🏋️ Rule-Based Web Application", "🏋️ Rule-Based Web Application"],
+      ["Gym Recommendation Rule-Based System", "Sistem Rekomendasi Gym Berbasis Aturan"],
+      ["A Laravel-based web application that applies rule-based logic to provide gym-related recommendations based on user criteria and input.", "Aplikasi web berbasis Laravel yang menerapkan logika berbasis aturan untuk memberikan rekomendasi gym berdasarkan kriteria dan masukan pengguna."],
+      ["View on GitHub →", "Lihat di GitHub →"],
+      ["Organizational and internship experience", "Pengalaman organisasi dan magang"],
+      ["Construction Staff Intern", "Construction Staff Intern"],
+      ["Prepared and organized administrative documents for projects and partner management.", "Menyiapkan dan menata dokumen administrasi untuk proyek serta pengelolaan mitra."],
+      ["Handled BACT / Commissioning Test Reports as part of final project documentation.", "Menangani BACT / Commissioning Test Reports sebagai bagian dari dokumentasi akhir proyek."],
+      ["Managed documentation for 43 partner companies using Microsoft Excel and Google Spreadsheet.", "Mengelola dokumentasi 43 perusahaan mitra menggunakan Microsoft Excel dan Google Spreadsheet."],
+      ["Coordinated with team to ensure documents met standards and were properly accessible.", "Berkoordinasi dengan tim untuk memastikan dokumen memenuhi standar dan dapat diakses dengan baik."],
+      ["Active Contributor / Event Support Team", "Kontributor Aktif / Tim Pendukung Acara"],
+      ["Designed promotional materials including webinar flyers for a Data Science event.", "Mendesain materi promosi, termasuk flyer webinar untuk acara Data Science."],
+      ["Participated in community outreach program in Telaga Jernih Village, Binjai.", "Berpartisipasi dalam program pengabdian masyarakat di Desa Telaga Jernih, Binjai."],
+      ["Managed event technical setup including infocus, sound system, and media.", "Mengelola kebutuhan teknis acara, termasuk proyektor, sound system, dan media."],
+      ["Educational background", "Latar belakang pendidikan"],
+      ["Key information about education, location, languages, and areas of interest.", "Informasi utama tentang pendidikan, lokasi, bahasa, dan bidang minat."],
+      ["Bachelor of Science in Information System", "Sarjana Sistem Informasi"],
+      ["Focus: System Development, UI/UX, IT Project Management, Data Analysis", "Fokus: Pengembangan Sistem, UI/UX, Manajemen Proyek TI, Analisis Data"],
+      ["Personal Info", "Informasi Pribadi"],
+      ["Location: Medan, Indonesia", "Lokasi: Medan, Indonesia"],
+      ["Languages: Indonesian, English", "Bahasa: Indonesia, Inggris"],
+      ["Competency Certifications & Licenses", "Sertifikasi Kompetensi dan Lisensi"],
+      ["Competency certificates, workshops, and training.", "Sertifikat kompetensi, workshop, dan pelatihan."],
+      ["Junior Web Programmer", "Junior Web Programmer"],
+      ["E-Commerce Web Development Fundamentals", "Dasar Pengembangan Web E-COMMERCE"],
+      ["Workshop Data Science", "Data Science Workshop"],
+      ["DevOps Fundamentals", "Dasar-Dasar DevOps"],
+      ["Introduction to Computer Programming", "Mengenal Pemograman Komputer"],
+      ["Text Editor Class", "Kelas Text Editor"],
+      ["Community Service Program", "Kuliah Kerja Nyata"],
+      ["Let's build something useful together.", "Mari membangun sesuatu yang bermanfaat bersama."],
+      ["Open to internship opportunities, project collaborations, and discussions about Web Development, UI/UX Design, Data Analysis, and Project Documentation.", "Terbuka untuk peluang magang, kolaborasi proyek, dan diskusi seputar Web Development, UI/UX Design, Data Analysis, dan Project Documentation."],
+      ["✉ Email", "✉ Email"],
+      ["© 2026 Eka Hasbi Habibi · Portfolio inspired by modern frontend portfolio layout.", "© 2026 Eka Hasbi Habibi · Portofolio yang terinspirasi dari tata letak frontend modern."]
+    ];
+
+    const languageNodes = [];
+    const textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+
+    while (textWalker.nextNode()) {
+      const node = textWalker.currentNode;
+      const normalizedText = node.nodeValue.trim().replace(/\s+/g, " ");
+      const translation = translations.find(([en, id]) => en === normalizedText || id === normalizedText);
+
+      if (translation) {
+        languageNodes.push({
+          node,
+          en: translation[0],
+          id: translation[1],
+          leading: node.nodeValue.match(/^\s*/)[0],
+          trailing: node.nodeValue.match(/\s*$/)[0]
+        });
+      }
+    }
+
+    function setLanguage(language) {
+      const selectedLanguage = language === "id" ? "id" : "en";
+
+      languageNodes.forEach((item) => {
+        item.node.nodeValue = item.leading + item[selectedLanguage] + item.trailing;
+      });
+
+      document.documentElement.lang = selectedLanguage;
+      document.title = selectedLanguage === "en"
+        ? "Eka Hasbi Habibi - Portfolio"
+        : "Eka Hasbi Habibi - Portofolio";
+    }
+
+    const languageSelect = document.getElementById("languageSelect");
+    languageSelect.addEventListener("change", (event) => setLanguage(event.target.value));
+    setLanguage("en");
+
     const revealEls = document.querySelectorAll('.reveal');
 
     const observer = new IntersectionObserver((entries) => {
