@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eka Hasbi Habibi - Portfolio</title>
+  <title>Eka Hasbi Habibi - Portofolio</title>
   <meta name="description" content="Portfolio Eka Hasbi Habibi - Information System Student, Web Development, UI/UX, Data Analysis." />
 
   <style>
@@ -1037,9 +1037,9 @@
         <li><a href="#education">Education</a></li>
         <li><a href="./resume.html">Resume</a></li>
         <li class="language-switcher">
-          <select id="languageSelect" class="language-select" aria-label="Select language">
-            <option value="en" selected>🌐 EN</option>
-            <option value="id">🌐 ID</option>
+          <select id="languageSelect" class="language-select" aria-label="Pilih bahasa">
+            <option value="id" selected>🌐 ID</option>
+            <option value="en">🌐 EN</option>
           </select>
         </li>
         <li><a class="nav-cta" href="#contact">Contact</a></li>
@@ -1636,6 +1636,7 @@
   </footer>
 
   <script>
+    // Urutan pasangan terjemahan: [bahasa Inggris, bahasa Indonesia].
     const translations = [
       ["Certification", "Sertifikasi"],
       ["About", "Tentang"],
@@ -1708,13 +1709,13 @@
     while (textWalker.nextNode()) {
       const node = textWalker.currentNode;
       const normalizedText = node.nodeValue.trim().replace(/\s+/g, " ");
-      const translation = translations.find(([id, en]) => id === normalizedText || en === normalizedText);
+      const translation = translations.find(([en, id]) => en === normalizedText || id === normalizedText);
 
       if (translation) {
         languageNodes.push({
           node,
-          id: translation[0],
-          en: translation[1],
+          en: translation[0],
+          id: translation[1],
           leading: node.nodeValue.match(/^\s*/)[0],
           trailing: node.nodeValue.match(/\s*$/)[0]
         });
@@ -1722,13 +1723,15 @@
     }
 
     function setLanguage(language) {
-      const selectedLanguage = language === "id" ? "id" : "en";
+      const selectedLanguage = language === "en" ? "en" : "id";
 
       languageNodes.forEach((item) => {
         item.node.nodeValue = item.leading + item[selectedLanguage] + item.trailing;
       });
 
       document.documentElement.lang = selectedLanguage;
+      languageSelect.value = selectedLanguage;
+      languageSelect.setAttribute("aria-label", selectedLanguage === "id" ? "Pilih bahasa" : "Select language");
       document.title = selectedLanguage === "en"
         ? "Eka Hasbi Habibi - Portfolio"
         : "Eka Hasbi Habibi - Portofolio";
