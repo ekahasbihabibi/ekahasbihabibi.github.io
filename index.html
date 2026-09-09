@@ -1180,14 +1180,14 @@
           <span class="project-meta">📍 Decision Support System</span>
           <h3>SPK Pemilihan Kafe Medan Timur</h3>
           <p>
-            Sistem pendukung keputusan untuk merekomendasikan kafe dan menu termurah di wilayah Medan Timur,
-            dilengkapi pencarian rute menggunakan algoritma Dijkstra dan visualisasi peta digital.
+           Mengembangkan sistem pendukung keputusan berbasis web yang terintegrasi dengan Sistem Informasi Geografis (GIS) untuk merekomendasikan kafe dan menu termurah di wilayah Medan Timur. Fitur utama meliputi pemetaan lokasi kafe, visualisasi data geografis pada peta digital interaktif, serta pencarian rute terpendek menggunakan algoritma Dijkstra.
           </p>
           <div class="tags">
             <span class="tag">CodeIgniter 4</span>
             <span class="tag">PHP</span>
             <span class="tag">MySQL</span>
             <span class="tag">Dijkstra</span>
+            <span class="tag">GIS</span>
             <span class="tag">Leaflet</span>
           </div>
           <a class="project-link" href="https://github.com/ekahasbihabibi/SPK-Kafe-Medan-Timur-CI4" target="_blank" rel="noopener">View on GitHub →</a>
@@ -1659,7 +1659,7 @@
       ["Project administration, documentation, and data analysis.", "Administrasi proyek, dokumentasi, dan analisis data."],
       ["Selected public projects", "Beberapa proyek publik"],
       ["📍 Decision Support System", "📍 Decision Support System"],
-      ["A decision support system that recommends cafés and the most affordable menus in East Medan, featuring route searching with Dijkstra's algorithm and digital map visualization.", "Sistem pendukung keputusan untuk merekomendasikan kafe dan menu termurah di wilayah Medan Timur, dilengkapi pencarian rute menggunakan algoritma Dijkstra dan visualisasi peta digital."],
+      ["Developed a web-based decision support system integrated with a Geographic Information System (GIS) to recommend cafés and the most affordable menu items in Medan Timur. Key features include café location mapping, geographic data visualization on interactive digital maps, and shortest-path routing using Dijkstra’s algorithm.", "Mengembangkan sistem pendukung keputusan berbasis web yang terintegrasi dengan Sistem Informasi Geografis (GIS) untuk merekomendasikan kafe dan menu termurah di wilayah Medan Timur. Fitur utama meliputi pemetaan lokasi kafe, visualisasi data geografis pada peta digital interaktif, serta pencarian rute terpendek menggunakan algoritma Dijkstra."],
       ["🌐 Team Project", "🌐 Team Project"],
       ["Collaborative web development project built with a team as part of foundational web programming coursework.", "Proyek pengembangan web kolaboratif yang dibuat bersama tim sebagai bagian dari mata kuliah dasar pemrograman web."],
       ["🗂️ Document Management System", "🗂️ Document Management System"],
@@ -1713,8 +1713,8 @@
       if (translation) {
         languageNodes.push({
           node,
-          en: translation[0],
           id: translation[1],
+          en: translation[0],
           leading: node.nodeValue.match(/^\s*/)[0],
           trailing: node.nodeValue.match(/\s*$/)[0]
         });
