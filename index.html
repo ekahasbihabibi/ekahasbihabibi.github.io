@@ -1708,7 +1708,7 @@
     while (textWalker.nextNode()) {
       const node = textWalker.currentNode;
       const normalizedText = node.nodeValue.trim().replace(/\s+/g, " ");
-      const translation = translations.find(([en, id]) => en === normalizedText || id === normalizedText);
+      const translation = translations.find(([id, en]) => id === normalizedText || en === normalizedText);
 
       if (translation) {
         languageNodes.push({
