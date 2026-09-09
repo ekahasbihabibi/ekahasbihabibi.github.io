@@ -1713,8 +1713,8 @@
       if (translation) {
         languageNodes.push({
           node,
-          id: translation[1],
-          en: translation[0],
+          id: translation[0],
+          en: translation[1],
           leading: node.nodeValue.match(/^\s*/)[0],
           trailing: node.nodeValue.match(/\s*$/)[0]
         });
