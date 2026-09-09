@@ -1729,14 +1729,14 @@
       });
 
       document.documentElement.lang = selectedLanguage;
-      document.title = selectedLanguage === "id"
+      document.title = selectedLanguage === "en"
         ? "Eka Hasbi Habibi - Portfolio"
         : "Eka Hasbi Habibi - Portofolio";
     }
 
     const languageSelect = document.getElementById("languageSelect");
     languageSelect.addEventListener("change", (event) => setLanguage(event.target.value));
-    setLanguage("en");
+    setLanguage("id");
 
     const revealEls = document.querySelectorAll('.reveal');
 
