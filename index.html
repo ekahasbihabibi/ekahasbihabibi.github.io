@@ -1053,7 +1053,49 @@
         margin-top: 20px;
       }
     }
-  </style>
+  
+/* StudyBuddy: show complete portrait screenshots from the mobile app. */
+#studyBuddySlider .project-slider-viewport {
+  background: linear-gradient(135deg, #f0f5ff, #f8faff);
+}
+#studyBuddySlider .project-slide {
+  aspect-ratio: auto;
+  height: 480px;
+  padding: 20px 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+#studyBuddySlider .project-slide img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(36, 59, 107, 0.16);
+  transform: none;
+}
+#studyBuddySlider .project-slide:hover img {
+  transform: none;
+}
+@media (max-width: 600px) {
+  #studyBuddySlider .project-slide {
+    height: 400px;
+    padding: 16px 46px;
+  }
+  #studyBuddySlider .project-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+  }
+  #studyBuddySlider .project-prev { left: 8px; }
+  #studyBuddySlider .project-next { right: 8px; }
+}
+
+</style>
 </head>
 
 <body>
